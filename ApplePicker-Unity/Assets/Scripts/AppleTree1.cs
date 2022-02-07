@@ -21,13 +21,20 @@ public class AppleTree1 : MonoBehaviour
     public float speed = 10f; //tree speed
     public float leftAndRightEdge = 20f; //distance where the tree turns around
     public GameObject applePrefab; //prefab for instantiating apples
-    public float secondsBetweenApplesDropped = 1f; //time between apple drops
+    public float secondsBetweenAppleDrops = 1f; //time between apple drops
     public float chanceToChangeDirections = 0.1f; //chance to change directions
 
 
     // Start is called before the first frame update
     void Start()
     {
+        // Dropping apples every second
+        InvokeRepeating("DropApple", 2f, secondsBetweenAppleDrops);
+    }
+    void DropApple()
+    {
+        GameObject apple = Instantiate(applePrefab) as GameObject;
+        apple.transform.position = transform.position;
 
     }
 
